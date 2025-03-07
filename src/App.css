@@ -1,0 +1,10 @@
+.pokemonCardContainer {
+  margin-top: 20px;
+  width: calc(100% - 20px * 2);
+  margin-inline: auto;
+  height: 100dvh;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  place-items: center;
+  gap: 50px;
+}

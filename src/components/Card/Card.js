@@ -1,4 +1,5 @@
 import React from "react";
+import "./Card.css";
 
 function Card({ pokemon }) {
   return (
@@ -8,8 +9,6 @@ function Card({ pokemon }) {
           <img
             src={pokemon.sprites.front_default}
             alt={`${pokemon.name}のイメージ画像`}
-            width={"100px"}
-            height={"100px"}
           />
         </div>
         <h3 className="cardName">{pokemon.name}</h3>
