@@ -2,10 +2,31 @@
   margin-top: 20px;
   width: calc(100% - 20px * 2);
   margin-inline: auto;
-  height: 100dvh;
   display: grid;
   grid-template-columns: repeat(auto-fill, 290px);
   justify-content: center;
   place-items: center;
   gap: 50px;
+}
+
+.btn {
+  text-align: center;
+  padding-block: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+  button {
+    display: inline-block;
+    padding: 13px 32px;
+    font-size: 1rem;
+    font-weight: 600;
+    background: rgb(133, 151, 252);
+    color: #fff;
+    border: none;
+    box-shadow: 2px 8px 21px -2px #777;
+    border-radius: 5px;
+    cursor: pointer;
+  }
 }

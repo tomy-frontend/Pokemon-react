@@ -9,6 +9,8 @@ function App() {
   const initialURL = "https://pokeapi.co/api/v2/pokemon";
   const [loading, setLoading] = useState(true); // ローディング状態の管理
   const [pokemonData, setPokemonData] = useState([]);
+  const [nextUrl, setNextUrl] = useState("");
+  const [prevUrl, setPrevUrl] = useState("");
 
   // useEffectの第二引数を[]にすることで、初回レンダリング時のみ発火
   useEffect(() => {
@@ -19,7 +21,8 @@ function App() {
 
         // 各ポケモンの詳細なデータを取得
         loadPokemon(res.results);
-        console.log(res);
+        setNextUrl(res.next); // 次のポケモンのURLが入る
+        setPrevUrl(res.previous); // 前のポケモンのURLが入る(1ページ目はnull)
         setLoading(false); // データ取得完了でfalse
       } catch (e) {
         console.error("App.jsでエラーをキャッチしました", e);
@@ -42,8 +45,27 @@ function App() {
   };
 
   // ページ遷移
-  const handlePrevPage = () => {};
-  const handleNextPage = () => {};
+  // 次のページへ
+  const handleNextPage = async () => {
+    setLoading(true);
+    let data = await getAllPokemon(nextUrl); // 取得したデータの中に次のポケモン20匹のデータURLが入っているのでそれがnextUrlに入っている
+    await loadPokemon(data.results); // 新しいポケモンデータのresultsの中にそれぞれのポケモンのデータが入っているのでそれを引数に渡すと、ポケモンの詳細データを出力することができる
+    setNextUrl(data.next); // 取得したデータの中のnextというパラメーターの中にさらに次のページの情報があるのでそれでnextUrlを更新してあげる
+    setPrevUrl(data.previous);
+    setLoading(false);
+  };
+
+  // 前のページへ
+  const handlePrevPage = async () => {
+    if (!prevUrl) return; // 1ページ目はnullのため
+
+    setLoading(true);
+    let data = await getAllPokemon(prevUrl);
+    await loadPokemon(data.results);
+    setNextUrl(data.next);
+    setPrevUrl(data.previous);
+    setLoading(false);
+  };
 
   return (
     <>
@@ -53,14 +75,14 @@ function App() {
           <h2>ロード中・・・</h2>
         ) : (
           <>
+            <div className="btn">
+              <button onClick={handlePrevPage}>前へ</button>
+              <button onClick={handleNextPage}>次へ</button>
+            </div>
             <div className="pokemonCardContainer">
               {pokemonData.map((pokemon, i) => {
                 return <Card key={i} pokemon={pokemon} />;
               })}
-            </div>
-            <div className="btn">
-              <button onClick={handlePrevPage}>前へ</button>
-              <button onClick={handleNextPage}>次へ</button>
             </div>
           </>
         )}
