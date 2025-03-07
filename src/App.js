@@ -7,7 +7,7 @@ import { Navbar } from "./components/Navbar/Navbar";
 function App() {
   // pokeAPIの基本のURLを変数に格納
   const initialURL = "https://pokeapi.co/api/v2/pokemon";
-  const [loading, setLoading] = useState(true); // ローディング状態の管理
+  const [loading, setLoading] = useState(true); // ローディング状態の管理,trueの場合はローディング中
   const [pokemonData, setPokemonData] = useState([]);
   const [nextUrl, setNextUrl] = useState("");
   const [prevUrl, setPrevUrl] = useState("");
