@@ -57,7 +57,7 @@ function App() {
 
   // 前のページへ
   const handlePrevPage = async () => {
-    if (!prevUrl) return; // 1ページ目はnullのため
+    if (!prevUrl) return; // 1ページ目はnullのため終了させる
 
     setLoading(true);
     let data = await getAllPokemon(prevUrl);
