@@ -1,6 +1,4 @@
-// ************
 // ポケモンAPIからポケモンのデータを取得する関数
-// ************
 
 // APIエンドポイントURLにfetchしてデータを取得する関数
 export const getAllPokemon = async (url) => {
@@ -11,7 +9,7 @@ export const getAllPokemon = async (url) => {
 
     // エラーが発生した場合の処理
   } catch (e) {
-    console.log("データ取得中にエラーが発生しました。", e);
+    console.error("データ取得中にエラーが発生しました。", e);
     throw e; // エラーを再度投げることで、関数を呼び出した側にもエラーを伝えることができる
   }
 };

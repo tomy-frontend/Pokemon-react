@@ -15,7 +15,7 @@ function Card({ pokemon }) {
         </div>
         <h3 className="cardName">{pokemon.name}</h3>
         <div className="cardTypes">
-          <p>タイプ</p>
+          <p>Type</p>
           {pokemon.types.map((type) => {
             return (
               <div key={type.type.name}>
