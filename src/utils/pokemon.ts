@@ -1,7 +1,47 @@
 // ポケモンAPIからポケモンのデータを取得する関数
 
+// PokeAPIレスポンスの型定義
+export interface PokemonListResponse {
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: PokemonBasic[];
+}
+
+export interface PokemonBasic {
+  name: string;
+  url: string;
+}
+
+export interface PokemonDetail {
+  id: number;
+  name: string;
+  height: number;
+  weight: number;
+  sprites: {
+    front_default: string;
+    [key: string]: any;
+  };
+  types: {
+    slot: number;
+    type: {
+      name: string;
+      url: string;
+    };
+  }[];
+  abilities: {
+    ability: {
+      name: string;
+      url: string;
+    };
+    is_hidden: boolean;
+    slot: number;
+  }[];
+  [key: string]: any;
+}
+
 // APIエンドポイントURLにfetchしてデータを取得する関数
-export const getAllPokemon = async (url) => {
+export const getAllPokemon = async (url: string): Promise<PokemonListResponse> => {
   try {
     const res = await fetch(url); // 引数で渡ってきたurlに接続して変数resに格納する
     const data = await res.json(); // 渡ってきたurlから取得したデータをjson形式に変換したものを変数dataに格納する
@@ -16,7 +56,7 @@ export const getAllPokemon = async (url) => {
 
 // 取得したjson形式のポケモンデータの詳細データを取得する関数
 // getPokemon.urlがurlに入る
-export const getPokemon = async (url) => {
+export const getPokemon = async (url: string): Promise<PokemonDetail> => {
   try {
     const res = await fetch(url);
     const data = await res.json();

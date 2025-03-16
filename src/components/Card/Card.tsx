@@ -1,7 +1,12 @@
 import React from "react";
 import "./Card.css";
+import { PokemonDetail } from "../../utils/pokemon";
 
-function Card({ pokemon }) {
+interface CardProps {
+  pokemon: PokemonDetail;
+}
+
+const Card: React.FC<CardProps> = ({ pokemon }) => {
   return (
     <>
       <article className="card">
@@ -29,17 +34,17 @@ function Card({ pokemon }) {
             <p className="title">重さ: {pokemon.weight}kg</p>
           </div>
           <div className="cardData">
-            <p className="title">高さ: {pokemon.height}kg</p>
+            <p className="title">高さ: {pokemon.height}m</p>
           </div>
           <div className="cardData">
             <p className="title">
-              アビリティ: {pokemon.abilities[0].ability.name}kg
+              アビリティ: {pokemon.abilities[0]?.ability.name || "なし"}
             </p>
           </div>
         </div>
       </article>
     </>
   );
-}
+};
 
 export default Card;
