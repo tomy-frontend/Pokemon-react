@@ -1,17 +1,17 @@
 .card {
-  width: 290px;
-  box-shadow: 2px 8px 21px -2px #777;
-  border-radius: 10px;
-  text-align: center;
-  padding: 10px;
-  background: #fff;
+    width: 290px;
+    box-shadow: 2px 8px 21px -2px #777;
+    border-radius: 10px;
+    text-align: center;
+    padding: 1.5em;
+    background: #f6f6f6;
 }
 
 .cardName {
-  padding: 0;
-  font-size: 24px;
+    padding: 0;
+    font-size: 1.5rem;
 }
 
 .cardInfo {
-  text-align: center;
+    text-align: center;
 }
