@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import { getAllPokemon, getPokemon, PokemonDetail, PokemonBasic } from "./utils/pokemon";
+import {
+  getAllPokemon,
+  getPokemon,
+  PokemonDetail,
+  PokemonBasic,
+} from "./utils/pokemon";
 import Card from "./components/Card/Card";
 import { Navbar } from "./components/Navbar/Navbar";
 
@@ -40,7 +45,7 @@ function App() {
         data.map((pokemon) => {
           let pokemonRecord = getPokemon(pokemon.url); // 一つ一つのポケモンのURL
           return pokemonRecord;
-        })
+        }),
       );
       setPokemonData(_pokemonData);
     } catch (e) {
@@ -53,7 +58,7 @@ function App() {
   // 次のページへ
   const handleNextPage = async () => {
     if (!nextUrl) return;
-    
+
     setLoading(true);
     let data = await getAllPokemon(nextUrl); // 取得したデータの中に次のポケモン20匹のデータURLが入っているのでそれがnextUrlに入っている
     await loadPokemon(data.results); // 新しいポケモンデータのresultsの中にそれぞれのポケモンのデータが入っているのでそれを引数に渡すと、ポケモンの詳細データを出力することができる
@@ -86,8 +91,12 @@ function App() {
         ) : (
           <>
             <div className="btn">
-              <button onClick={handlePrevPage} disabled={!prevUrl}>前へ</button>
-              <button onClick={handleNextPage} disabled={!nextUrl}>次へ</button>
+              <button onClick={handlePrevPage} disabled={!prevUrl}>
+                prev
+              </button>
+              <button onClick={handleNextPage} disabled={!nextUrl}>
+                next
+              </button>
             </div>
             <div className="pokemonCardContainer">
               {pokemonData.map((pokemon) => {
