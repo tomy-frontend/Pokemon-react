@@ -1,23 +1,108 @@
 .card {
     width: 290px;
-    box-shadow: 2px 8px 21px -2px #777;
+    box-shadow: 2px 8px 21px -2px rgba(119, 119, 119, 0.3);
     border-radius: 10px;
     text-align: center;
     padding: 1.5em;
     background: #f6f6f6;
+    transition: all 0.3s ease;
+    transform-origin: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(135deg, rgba(133, 151, 252, 0.1), rgba(255, 255, 255, 0));
+    z-index: 0;
+    transform: translateY(100%);
+    transition: transform 0.6s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(133, 151, 252, 0.3);
+}
+
+.card:hover::before {
+    transform: translateY(0);
+}
+
+.cardImg {
+    position: relative;
+    z-index: 1;
+    transition: transform 0.5s ease;
+}
+
+.card:hover .cardImg {
+    transform: scale(1.15);
+}
+
+.cardImg img {
+    transition: filter 0.3s ease;
 }
 
 .cardName {
     padding: 0;
     font-size: 1.5rem;
+    position: relative;
+    z-index: 1;
+    background-image: linear-gradient(90deg, #5d6bf3, #8597fc);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInUp 0.5s forwards 0.2s;
 }
 
 .cardInfo {
     text-align: center;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInUp 0.5s forwards 0.4s;
 }
 
 .cardImage {
     width: 100%;
     height: auto;
     border-radius: 10px;
+}
+
+.cardTypes {
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInUp 0.5s forwards 0.3s;
+}
+
+.typeName {
+    display: inline-block;
+    margin: 5px;
+    padding: 3px 10px;
+    background: #8597fc;
+    color: white;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.card:hover .typeName {
+    transform: scale(1.05);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
