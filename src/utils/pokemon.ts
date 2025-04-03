@@ -1,6 +1,4 @@
 // ポケモンAPIからポケモンのデータを取得する関数
-
-// PokeAPIレスポンスの型定義
 export interface PokemonListResponse {
   count: number;
   next: string | null;
@@ -41,7 +39,9 @@ export interface PokemonDetail {
 }
 
 // APIエンドポイントURLにfetchしてデータを取得する関数
-export const getAllPokemon = async (url: string): Promise<PokemonListResponse> => {
+export const getAllPokemon = async (
+  url: string,
+): Promise<PokemonListResponse> => {
   try {
     const res = await fetch(url); // 引数で渡ってきたurlに接続して変数resに格納する
     const data = await res.json(); // 渡ってきたurlから取得したデータをjson形式に変換したものを変数dataに格納する
