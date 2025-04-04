@@ -31,14 +31,14 @@ const Card: React.FC<CardProps> = ({ pokemon }) => {
         </div>
         <div className="cardInfo">
           <div className="cardData">
-            <p className="title">重さ: {pokemon.weight}kg</p>
+            <p className="title">weight: {pokemon.weight}kg</p>
           </div>
           <div className="cardData">
-            <p className="title">高さ: {pokemon.height}m</p>
+            <p className="title">height: {pokemon.height}m</p>
           </div>
           <div className="cardData">
             <p className="title">
-              アビリティ: {pokemon.abilities[0]?.ability.name || "なし"}
+              Avility: {pokemon.abilities[0]?.ability.name || "なし"}
             </p>
           </div>
         </div>
