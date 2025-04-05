@@ -14,8 +14,8 @@ const Card: React.FC<CardProps> = ({ pokemon }) => {
           <img
             src={pokemon.sprites.front_default}
             alt={`${pokemon.name}のイメージ画像`}
-            width={"100px"}
-            height={"100px"}
+            width={"120px"}
+            height={"120px"}
           />
         </div>
         <h3 className="cardName">{pokemon.name}</h3>
