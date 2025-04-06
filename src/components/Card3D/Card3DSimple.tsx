@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { PokemonDetail } from '../../utils/pokemon';
 import './Card3DSimple.css';
 
@@ -12,6 +12,8 @@ interface Card3DSimpleProps {
 const Card3DSimple: React.FC<Card3DSimpleProps> = ({ pokemon }) => {
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isLoaded, setIsLoaded] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
 
   const getPokemonTypeColor = (type: string): string => {
@@ -39,8 +41,18 @@ const Card3DSimple: React.FC<Card3DSimpleProps> = ({ pokemon }) => {
     return typeColors[type] || typeColors.normal;
   };
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 100);
+    
+    return () => clearTimeout(timer);
+  }, []);
+
   const primaryType = pokemon.types[0]?.type.name || 'normal';
   const primaryColor = getPokemonTypeColor(primaryType);
+  const secondaryType = pokemon.types[1]?.type.name;
+  const secondaryColor = secondaryType ? getPokemonTypeColor(secondaryType) : `${primaryColor}88`;
   
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
@@ -49,11 +61,13 @@ const Card3DSimple: React.FC<Card3DSimpleProps> = ({ pokemon }) => {
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
     
+    setMousePosition({ x, y });
+    
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
     
-    const rotateY = ((x - centerX) / centerX) * 10; // Max 10 degrees
-    const rotateX = ((centerY - y) / centerY) * 10; // Max 10 degrees
+    const rotateY = ((x - centerX) / centerX) * 15; // Max 15 degrees
+    const rotateX = ((centerY - y) / centerY) * 15; // Max 15 degrees
     
     setRotation({ x: rotateX, y: rotateY });
   };
@@ -63,22 +77,34 @@ const Card3DSimple: React.FC<Card3DSimpleProps> = ({ pokemon }) => {
     setIsHovered(false);
   };
 
+  const calculateShinePosition = () => {
+    if (!cardRef.current || !isHovered) return { x: '50%', y: '50%' };
+    
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = (mousePosition.x / rect.width) * 100;
+    const y = (mousePosition.y / rect.height) * 100;
+    
+    return { x: `${x}%`, y: `${y}%` };
+  };
+
+  const shinePosition = calculateShinePosition();
+
   return (
     <div 
-      className="card3d-simple-container"
+      className={`card3d-simple-container ${isLoaded ? 'loaded' : ''}`}
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={resetRotation}
       style={{
-        transform: `perspective(1000px) rotateX(${rotation.x}deg) rotateY(${rotation.y}deg) ${isHovered ? 'translateZ(20px)' : ''}`,
+        transform: `perspective(1000px) rotateX(${rotation.x}deg) rotateY(${rotation.y}deg) ${isHovered ? 'translateZ(30px)' : ''}`,
         transition: isHovered ? 'transform 0.1s ease' : 'transform 0.5s ease',
       }}
     >
       <div 
         className="card3d-simple-background"
         style={{
-          background: `linear-gradient(135deg, ${primaryColor}, ${primaryColor}88)`,
+          background: `linear-gradient(135deg, ${primaryColor}, ${secondaryColor})`,
         }}
       />
       
@@ -88,8 +114,15 @@ const Card3DSimple: React.FC<Card3DSimpleProps> = ({ pokemon }) => {
             src={pokemon.sprites.front_default} 
             alt={pokemon.name}
             className="card3d-simple-image"
+            onLoad={() => setIsLoaded(true)}
           />
-          <div className="card3d-simple-shine" style={{ opacity: isHovered ? 0.2 : 0 }} />
+          <div 
+            className="card3d-simple-shine" 
+            style={{ 
+              opacity: isHovered ? 0.4 : 0,
+              background: `radial-gradient(circle at ${shinePosition.x} ${shinePosition.y}, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 60%)`,
+            }} 
+          />
         </div>
         
         <h3 className="card3d-simple-name">{pokemon.name}</h3>
