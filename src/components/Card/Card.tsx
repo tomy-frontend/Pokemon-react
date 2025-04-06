@@ -18,9 +18,9 @@ const TypeBadge: React.FC<{ type: PokemonType }> = ({ type }) => (
 /**
  * Component for displaying a data point in the card
  */
-const CardDataItem: React.FC<{ label: string; value: string | number }> = ({ 
-  label, 
-  value 
+const CardDataItem: React.FC<{ label: string; value: string | number }> = ({
+  label,
+  value,
 }) => (
   <div className="cardData">
     <p className="title">
@@ -53,9 +53,9 @@ const Card: React.FC<CardProps> = ({ pokemon }) => {
       <div className="cardInfo">
         <CardDataItem label="weight" value={`${pokemon.weight}kg`} />
         <CardDataItem label="height" value={`${pokemon.height}m`} />
-        <CardDataItem 
-          label="Ability" 
-          value={pokemon.abilities[0]?.ability.name || "なし"} 
+        <CardDataItem
+          label="Ability"
+          value={pokemon.abilities[0]?.ability.name || "なし"}
         />
       </div>
     </article>

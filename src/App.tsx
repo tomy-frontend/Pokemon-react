@@ -11,7 +11,7 @@ import { usePokemonData } from "./hooks/usePokemonData";
  */
 function App() {
   const initialURL = "https://pokeapi.co/api/v2/pokemon";
-  
+
   const {
     loading,
     pokemonData,

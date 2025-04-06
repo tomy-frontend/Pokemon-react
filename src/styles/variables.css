@@ -2,16 +2,28 @@
   /* Colors */
   --primary-color: #5d6bf3;
   --secondary-color: #8597fc;
-  --primary-gradient: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-  --button-gradient: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-  --button-hover-gradient: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+  --primary-gradient: linear-gradient(
+    90deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  --button-gradient: linear-gradient(
+    45deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  --button-hover-gradient: linear-gradient(
+    45deg,
+    var(--secondary-color),
+    var(--primary-color)
+  );
   --text-color: #333;
   --light-text: #fff;
   --disabled-color: #cccccc;
   --card-bg: #f6f6f6;
   --shadow-color: rgba(93, 107, 243, 0.2);
   --shadow-hover-color: rgba(93, 107, 243, 0.3);
-  
+
   /* Spacing */
   --spacing-xs: 5px;
   --spacing-sm: 10px;
@@ -19,18 +31,18 @@
   --spacing-lg: 20px;
   --spacing-xl: 30px;
   --spacing-xxl: 50px;
-  
+
   /* Animations */
   --transition-fast: 0.3s ease;
   --transition-medium: 0.5s ease;
   --transition-slow: 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  
+
   /* Border Radius */
   --border-radius-sm: 5px;
   --border-radius-md: 10px;
   --border-radius-lg: 20px;
   --border-radius-circle: 50%;
-  
+
   /* Box Shadows */
   --shadow-sm: 0 5px 10px var(--shadow-color);
   --shadow-md: 0 10px 20px var(--shadow-color);

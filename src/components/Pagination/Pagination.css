@@ -26,7 +26,7 @@
 }
 
 .pagination button::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -64,9 +64,11 @@
 }
 
 .pagination button:first-child:not(:disabled) {
-  box-shadow: 0 10px 20px rgba(93, 107, 243, 0.15), -5px 5px 10px rgba(93, 107, 243, 0.05);
+  box-shadow: 0 10px 20px rgba(93, 107, 243, 0.15),
+    -5px 5px 10px rgba(93, 107, 243, 0.05);
 }
 
 .pagination button:last-child:not(:disabled) {
-  box-shadow: 0 10px 20px rgba(93, 107, 243, 0.15), 5px 5px 10px rgba(93, 107, 243, 0.05);
+  box-shadow: 0 10px 20px rgba(93, 107, 243, 0.15),
+    5px 5px 10px rgba(93, 107, 243, 0.05);
 }

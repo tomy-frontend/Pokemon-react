@@ -1,5 +1,10 @@
 import { useState, useEffect } from "react";
-import { getAllPokemon, getPokemon, PokemonDetail, PokemonBasic } from "../utils/pokemon";
+import {
+  getAllPokemon,
+  getPokemon,
+  PokemonDetail,
+  PokemonBasic,
+} from "../utils/pokemon";
 
 interface UsePokemonDataReturn {
   loading: boolean;

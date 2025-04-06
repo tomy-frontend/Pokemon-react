@@ -81,15 +81,15 @@ export interface PokemonDetail {
  * @returns Promise resolving to PokemonListResponse
  */
 export const getAllPokemon = async (
-  url: string,
+  url: string
 ): Promise<PokemonListResponse> => {
   try {
     const response = await fetch(url);
-    
+
     if (!response.ok) {
       throw new Error(`API error: ${response.status}`);
     }
-    
+
     const data = await response.json();
     return data;
   } catch (error) {
@@ -106,11 +106,11 @@ export const getAllPokemon = async (
 export const getPokemon = async (url: string): Promise<PokemonDetail> => {
   try {
     const response = await fetch(url);
-    
+
     if (!response.ok) {
       throw new Error(`API error: ${response.status}`);
     }
-    
+
     const data = await response.json();
     return data;
   } catch (error) {
