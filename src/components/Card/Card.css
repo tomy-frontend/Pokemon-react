@@ -1,11 +1,13 @@
+@import '../../styles/variables.css';
+
 .card {
     width: 290px;
     box-shadow: 2px 8px 21px -2px rgba(119, 119, 119, 0.3);
-    border-radius: 10px;
+    border-radius: var(--border-radius-md);
     text-align: center;
     padding: 1.5em;
-    background: #f6f6f6;
-    transition: all 0.3s ease;
+    background: var(--card-bg);
+    transition: all var(--transition-fast);
     transform-origin: center;
     position: relative;
     overflow: hidden;
@@ -25,12 +27,12 @@
     );
     z-index: 0;
     transform: translateY(100%);
-    transition: transform 0.6s ease;
+    transition: transform var(--transition-medium);
 }
 
 .card:hover {
     transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 15px 30px rgba(133, 151, 252, 0.3);
+    box-shadow: var(--shadow-lg);
 }
 
 .card:hover::before {
@@ -40,7 +42,7 @@
 .cardImg {
     position: relative;
     z-index: 1;
-    transition: transform 0.5s ease;
+    transition: transform var(--transition-medium);
 }
 
 .card:hover .cardImg {
@@ -48,7 +50,7 @@
 }
 
 .cardImg img {
-    transition: filter 0.3s ease;
+    transition: filter var(--transition-fast);
 }
 
 .cardName {
@@ -56,7 +58,7 @@
     font-size: 1.5rem;
     position: relative;
     z-index: 1;
-    background-image: linear-gradient(90deg, #5d6bf3, #8597fc);
+    background-image: var(--primary-gradient);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
@@ -77,7 +79,7 @@
 .cardImage {
     width: 100%;
     height: auto;
-    border-radius: 10px;
+    border-radius: var(--border-radius-md);
 }
 
 .cardTypes {
@@ -90,13 +92,13 @@
 
 .typeName {
     display: inline-block;
-    margin: 5px;
+    margin: var(--spacing-xs);
     padding: 3px 10px;
-    background: #8597fc;
-    color: white;
-    border-radius: 20px;
+    background: var(--secondary-color);
+    color: var(--light-text);
+    border-radius: var(--border-radius-lg);
     font-size: 0.8rem;
-    transition: all 0.3s ease;
+    transition: all var(--transition-fast);
 }
 
 .card:hover .typeName {
@@ -108,5 +110,11 @@
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: 100%;
     }
 }
