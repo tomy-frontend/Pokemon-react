@@ -1,10 +1,11 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import "./App.css";
-import Card from "./components/Card/Card";
 import { Navbar } from "./components/Navbar/Navbar";
 import { Loading } from "./components/Loading/Loading";
 import { Pagination } from "./components/Pagination/Pagination";
 import { usePokemonData } from "./hooks/usePokemonData";
+
+const Card3D = lazy(() => import("./components/Card3D/Card3D"));
 
 /**
  * Main App component
@@ -36,9 +37,11 @@ function App() {
               onNextClick={handleNextPage}
             />
             <div className="pokemonCardContainer">
-              {pokemonData.map((pokemon) => (
-                <Card key={pokemon.id} pokemon={pokemon} />
-              ))}
+              <Suspense fallback={<Loading />}>
+                {pokemonData.map((pokemon) => (
+                  <Card3D key={pokemon.id} pokemon={pokemon} />
+                ))}
+              </Suspense>
             </div>
           </>
         )}
