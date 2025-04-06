@@ -1,0 +1,226 @@
+@import '../../styles/variables.css';
+
+.card3d-simple-container {
+  width: 290px;
+  height: 400px;
+  position: relative;
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  margin: 20px;
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+  cursor: pointer;
+  z-index: 1;
+}
+
+.card3d-simple-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  transform: translateZ(-10px);
+}
+
+.card3d-simple-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(5px);
+  transform-style: preserve-3d;
+  z-index: 2;
+}
+
+.card3d-simple-image-container {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin-bottom: 15px;
+  transform-style: preserve-3d;
+  transform: translateZ(30px);
+  transition: transform 0.3s ease;
+}
+
+.card3d-simple-container:hover .card3d-simple-image-container {
+  transform: translateZ(50px) scale(1.1);
+}
+
+.card3d-simple-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
+  transition: filter 0.3s ease;
+}
+
+.card3d-simple-container:hover .card3d-simple-image {
+  filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.4));
+}
+
+.card3d-simple-shine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(255, 255, 255, 0) 60%
+  );
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card3d-simple-name {
+  margin: 0 0 15px 0;
+  font-size: 1.5rem;
+  background-image: var(--primary-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-align: center;
+  transform: translateZ(20px);
+  transition: transform 0.3s ease;
+}
+
+.card3d-simple-container:hover .card3d-simple-name {
+  transform: translateZ(30px);
+}
+
+.card3d-simple-types {
+  width: 100%;
+  margin-bottom: 15px;
+  text-align: center;
+  transform: translateZ(15px);
+}
+
+.card3d-simple-types p {
+  margin: 0 0 5px 0;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.card3d-simple-type-badges {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.card3d-simple-type-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  color: white;
+  border-radius: var(--border-radius-lg);
+  font-size: 0.8rem;
+  transition: all var(--transition-fast);
+  transform: translateZ(25px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.card3d-simple-container:hover .card3d-simple-type-badge {
+  transform: translateZ(35px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.card3d-simple-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transform: translateZ(10px);
+  transition: transform 0.3s ease;
+}
+
+.card3d-simple-container:hover .card3d-simple-info {
+  transform: translateZ(20px);
+}
+
+.card3d-simple-stat {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text-color);
+}
+
+.card3d-simple-stat span {
+  font-weight: bold;
+}
+
+/* Floating particles animation */
+.card3d-simple-particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.6);
+  pointer-events: none;
+  z-index: 4;
+  animation: float 3s infinite ease-in-out;
+}
+
+.card3d-simple-particle.p1 {
+  top: 20%;
+  left: 20%;
+  width: 12px;
+  height: 12px;
+  animation-delay: 0s;
+}
+
+.card3d-simple-particle.p2 {
+  top: 30%;
+  right: 25%;
+  width: 6px;
+  height: 6px;
+  animation-delay: 0.5s;
+}
+
+.card3d-simple-particle.p3 {
+  bottom: 30%;
+  left: 30%;
+  width: 10px;
+  height: 10px;
+  animation-delay: 1s;
+}
+
+.card3d-simple-particle.p4 {
+  bottom: 20%;
+  right: 20%;
+  width: 8px;
+  height: 8px;
+  animation-delay: 1.5s;
+}
+
+.card3d-simple-particle.p5 {
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  animation-delay: 2s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateZ(40px);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-20px) translateZ(60px);
+    opacity: 0.8;
+  }
+}
+
+@media (max-width: 768px) {
+  .card3d-simple-container {
+    width: 100%;
+    height: 380px;
+  }
+}

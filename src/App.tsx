@@ -5,7 +5,7 @@ import { Loading } from "./components/Loading/Loading";
 import { Pagination } from "./components/Pagination/Pagination";
 import { usePokemonData } from "./hooks/usePokemonData";
 
-const Card3D = lazy(() => import("./components/Card3D/Card3D"));
+const Card3DSimple = lazy(() => import("./components/Card3D/Card3DSimple"));
 
 /**
  * Main App component
@@ -39,7 +39,7 @@ function App() {
             <div className="pokemonCardContainer">
               <Suspense fallback={<Loading />}>
                 {pokemonData.map((pokemon) => (
-                  <Card3D key={pokemon.id} pokemon={pokemon} />
+                  <Card3DSimple key={pokemon.id} pokemon={pokemon} />
                 ))}
               </Suspense>
             </div>
