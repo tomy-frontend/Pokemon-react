@@ -5,7 +5,7 @@
   box-shadow: 2px 8px 21px -2px rgba(119, 119, 119, 0.3);
   border-radius: var(--border-radius-md);
   text-align: center;
-  padding: 1.5em;
+  padding: 1em;
   background: var(--card-bg);
   transition: all var(--transition-fast);
   transform-origin: center;
@@ -93,7 +93,7 @@
 .typeName {
   display: inline-block;
   margin: var(--spacing-xs);
-  padding: 3px 10px;
+  padding: 10em;
   background: var(--secondary-color);
   color: var(--light-text);
   border-radius: var(--border-radius-lg);

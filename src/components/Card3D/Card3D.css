@@ -1,4 +1,4 @@
-@import '../../styles/variables.css';
+@import "../../styles/variables.css";
 
 .card3d-container {
   width: 290px;
@@ -50,7 +50,7 @@
 
 .card3d-name {
   margin: 0 0 10px 0;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   background-image: var(--primary-gradient);
   background-clip: text;
   -webkit-background-clip: text;
