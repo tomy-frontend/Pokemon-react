@@ -1,120 +1,120 @@
 @import "../../styles/variables.css";
 
 .card {
-  width: 290px;
-  box-shadow: 2px 8px 21px -2px rgba(119, 119, 119, 0.3);
-  border-radius: var(--border-radius-md);
-  text-align: center;
-  padding: 1em;
-  background: var(--card-bg);
-  transition: all var(--transition-fast);
-  transform-origin: center;
-  position: relative;
-  overflow: hidden;
+    width: 290px;
+    box-shadow: 2px 8px 21px -2px rgba(119, 119, 119, 0.3);
+    border-radius: var(--border-radius-md);
+    text-align: center;
+    padding: 1em;
+    background: var(--card-bg);
+    transition: all var(--transition-fast);
+    transform-origin: center;
+    position: relative;
+    overflow: hidden;
 }
 
 .card::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(133, 151, 252, 0.1),
-    rgba(255, 255, 255, 0)
-  );
-  z-index: 0;
-  transform: translateY(100%);
-  transition: transform var(--transition-medium);
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(133, 151, 252, 0.1),
+        rgba(255, 255, 255, 0)
+    );
+    z-index: 0;
+    transform: translateY(100%);
+    transition: transform var(--transition-medium);
 }
 
 .card:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: var(--shadow-lg);
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: var(--shadow-lg);
 }
 
 .card:hover::before {
-  transform: translateY(0);
+    transform: translateY(0);
 }
 
 .cardImg {
-  position: relative;
-  z-index: 1;
-  transition: transform var(--transition-medium);
+    position: relative;
+    z-index: 1;
+    transition: transform var(--transition-medium);
 }
 
 .card:hover .cardImg {
-  transform: scale(1.15);
+    transform: scale(1.15);
 }
 
 .cardImg img {
-  transition: filter var(--transition-fast);
+    transition: filter var(--transition-fast);
 }
 
 .cardName {
-  padding: 0;
-  font-size: 1.5rem;
-  position: relative;
-  z-index: 1;
-  background-image: var(--primary-gradient);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  opacity: 0;
-  transform: translateY(10px);
-  animation: fadeInUp 0.5s forwards 0.2s;
+    padding: 0;
+    font-size: 1.5rem;
+    position: relative;
+    z-index: 1;
+    background-image: var(--primary-gradient);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInUp 0.5s forwards 0.2s;
 }
 
 .cardInfo {
-  text-align: center;
-  position: relative;
-  z-index: 1;
-  opacity: 0;
-  transform: translateY(10px);
-  animation: fadeInUp 0.5s forwards 0.4s;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInUp 0.5s forwards 0.4s;
 }
 
 .cardImage {
-  width: 100%;
-  height: auto;
-  border-radius: var(--border-radius-md);
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius-md);
 }
 
 .cardTypes {
-  position: relative;
-  z-index: 1;
-  opacity: 0;
-  transform: translateY(10px);
-  animation: fadeInUp 0.5s forwards 0.3s;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInUp 0.5s forwards 0.3s;
 }
 
 .typeName {
-  display: inline-block;
-  margin: var(--spacing-xs);
-  padding: 10em;
-  background: var(--secondary-color);
-  color: var(--light-text);
-  border-radius: var(--border-radius-lg);
-  font-size: 0.8rem;
-  transition: all var(--transition-fast);
+    display: inline-block;
+    margin: var(--spacing-xs);
+    padding: 10em;
+    background: var(--secondary-color);
+    color: var(--light-text);
+    border-radius: var(--border-radius-lg);
+    font-size: 0.8rem;
+    transition: all var(--transition-fast);
 }
 
 .card:hover .typeName {
-  transform: scale(1.05);
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    transform: scale(1.05);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
 }
 
 @keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @media (max-width: 768px) {
-  .card {
-    width: 100%;
-  }
+    .card {
+        width: 100%;
+    }
 }

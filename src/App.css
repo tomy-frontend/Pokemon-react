@@ -1,46 +1,48 @@
 @import "./styles/variables.css";
 
 .App {
-  width: 100%;
-  min-height: 100dvh;
-  padding: var(--spacing-lg);
+    width: 100%;
+    min-height: 100dvh;
+    padding: var(--spacing-lg);
 }
 
 .pokemonCardContainer {
-  margin-top: var(--spacing-lg);
-  width: calc(100% - var(--spacing-lg) * 2);
-  margin-inline: auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 290px);
-  justify-content: center;
-  place-items: center;
-  gap: var(--spacing-xxl);
-  animation: slideUpFade 0.6s ease-out;
-  perspective: 1000px;
-  contain: layout style;
-  will-change: opacity, transform;
+    --card-size: 290px;
+
+    margin-top: var(--spacing-lg);
+    width: calc(100% - var(--spacing-lg) * 2);
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, var(--card-size));
+    justify-content: center;
+    place-items: center;
+    gap: var(--spacing-xxl);
+    animation: slideUpFade 0.6s ease-out;
+    perspective: 1000px;
+    contain: layout style;
+    will-change: opacity, transform;
 }
 
 @media (max-width: 768px) {
-  .pokemonCardContainer {
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: var(--spacing-xl);
-  }
+    .pokemonCardContainer {
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: var(--spacing-xl);
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .pokemonCardContainer {
-    animation: none;
-  }
+    .pokemonCardContainer {
+        animation: none;
+    }
 }
 
 @keyframes slideUpFade {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
