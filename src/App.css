@@ -7,7 +7,7 @@
 }
 
 .pokemonCardContainer {
-    --card-size: 290px;
+    --card-size: 300px; /* カードサイズ */
 
     margin-top: var(--spacing-lg);
     width: calc(100% - var(--spacing-lg) * 2);
